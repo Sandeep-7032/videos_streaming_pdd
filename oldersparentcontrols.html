@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS World</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6f0;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f97806;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-buttons button {
+            background-color: #0c14f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .action-buttons button:hover {
+            background-color: #f1f90b;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 180px);
+        }
+
+        .center-image {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #ffe6f0;
+            padding: 30px 20px;
+        }
+
+        .parental-controls {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .parental-controls h3 {
+            font-size: 22px;
+            color: #f70c0c;
+        }
+
+        .parental-controls p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .parentbutton {
+            background-color: #0c14f6;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .parentbutton:hover {
+            background-color: #ff2727;
+        }
+
+        #settingsForm {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-field label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-field input, 
+        .form-field select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .content-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .form-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .save-button {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .save-button:hover {
+            background-color: #45a049;
+        }
+
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .cancel-button:hover {
+            background-color: #e03131;
+        }
+
+        .history-button {
+            background-color: #0c14f6;
+            color: white;
+        }
+
+        .history-button:hover {
+            background-color: #ff9900;
+        }
+    </style>
+    <script>
+        let parentalControlsSet = false;
+
+        function askSecurityQuestion() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const correctAnswer = num1 * num2;
+
+            const answer = prompt(`To access parental controls, answer this: What is ${num1} x ${num2}?`);
+
+            if (parseInt(answer) === correctAnswer) {
+                document.getElementById("settingsForm").style.display = "block";
+            } else {
+                alert("Incorrect answer. Please try again.");
+            }
+        }
+
+        function saveSettings() {
+            const screenTime = document.getElementById("screenTime").value;
+            const contentPreferences = Array.from(
+                document.querySelectorAll(".content-options input:checked")
+            ).map(option => option.value);
+
+            if (!screenTime || screenTime <= 0) {
+                alert("Please enter a valid screen time in minutes.");
+                return;
+            }
+
+            if (contentPreferences.length === 0) {
+                alert("Please select at least one content category.");
+                return;
+            }
+
+            parentalControlsSet = true;
+            alert(`Settings saved successfully!\n\nScreen Time: ${screenTime} minutes\nContent Preferences: ${contentPreferences.join(", ")}`);
+            document.getElementById("settingsForm").style.display = "none";
+
+            // Redirect to preschoolvideos.html
+            window.location.href = "oldersvideos.html";
+        }
+
+        function watchNow() {
+            if (!parentalControlsSet) {
+                alert("Please set parental controls before watching content.");
+                askSecurityQuestion();
+                return;
+            }
+
+            window.location.href = "watchpage.html";
+        }
+
+        function goToHistory() {
+            window.location.href = "history.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>KIDS WORLD</h1>
+        <div class="action-buttons">
+            <button onclick="watchNow()">Watch Now</button>
+            <button onclick="window.location.href='index1.html'">Home</button>
+        </div>
+    </header>
+
+    <main>
+        <img src="pdd images/parentscontrols3.jpeg" alt="Kids World Image" class="center-image">
+    </main>
+
+    <footer>
+        <section class="parental-controls">
+            <h3>Parents' Resources</h3>
+            <p>Kids world is a safe space for all kids! Parents can manage content settings to ensure a safe, fun, and educational experience.</p>
+            <button class="parentbutton" onclick="askSecurityQuestion()">Parental Controls</button>
+
+            <div id="settingsForm">
+                <div class="form-field">
+                    <label for="screenTime">Set Screen Time Limit (in minutes):</label>
+                    <input type="number" id="screenTime" min="1" placeholder="Enter screen time in minutes">
+                </div>
+
+                <div class="form-field">
+                    <label>Content Preferences:</label>
+                    <div class="content-options">
+                        <label><input type="checkbox" value="Adventure"> Adventure</label>
+                        <label><input type="checkbox" value="Education"> Education</label>
+                        <label><input type="checkbox" value="Fun"> Fun</label>
+                        <label><input type="checkbox" value="Science"> Science</label>
+                        <label><input type="checkbox" value="Music"> Music</label>
+                        <label><input type="checkbox" value="Art"> Art</label>
+                        <label><input type="checkbox" value="Sports"> Sports</label>
+                        <label><input type="checkbox" value="Animals"> Animals</label>
+                        <label><input type="checkbox" value="Math"> Math</label>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button class="save-button" onclick="saveSettings()">Save Settings</button>
+                    <button class="history-button" onclick="goToHistory()">History</button>
+                    <button class="cancel-button" onclick="document.getElementById('settingsForm').style.display = 'none';">Cancel</button>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

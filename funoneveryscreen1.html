@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids World - Fun on Every Screen</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body {
+            background: url('background-image.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #2d3748; /* Dark Slate */
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        .fun-page {
+            background-color: #4c51bf; /* Deep Blue */
+            padding: 40px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+        .fun-page h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .fun-page p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .image-container img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        .navigation-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .continue-button, .back-button {
+            padding: 10px 20px;
+            background-color: #f56565; /* Soft Red */
+            color: white;
+            font-size: 1em;
+            text-align: start;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .continue-button:hover, .back-button:hover {
+            transform: scale(1.1);
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .resource-item {
+            background-color: #68d391; /* Fresh Green */
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .resource-item:hover {
+            background-color: #68d391; /* Fresh Green */
+        }
+        .info-box {
+            margin-top: 20px;
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Home Section -->
+    <section id="home" class="fun-page" style="display: block;">
+        <h2>Welcome to Kids World</h2>
+        <p>Start exploring fun and educational activities!</p>
+        <div class="navigation-buttons">
+            <!-- Start Button -->
+            <button class="continue-button" onclick="nextSection('videos')">Start</button>
+            
+            <!-- Back Button -->
+            <a href="user/user_index.html">
+                <button class="back-button">Back to Home</button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="fun-page">
+        <div class="image-container">
+            <img src="pdd images/funimage1.jpg" alt="Videos">
+        </div>
+        <h2>Educational Videos</h2>
+        <p>Watch fun and educational videos covering topics like science, history, and arts to keep your child entertained while learning.</p>
+        
+        <div class="resources-grid">
+            <div class="resource-item" onclick="showInfo('science-info')">Science Fun</div>
+            <div class="resource-item" onclick="showInfo('history-info')">History Adventures</div>
+            <div class="resource-item" onclick="showInfo('creative-info')">Creative Arts</div>
+            <div class="resource-item" onclick="showInfo('math-info')">Math Magic</div>
+        </div>
+        
+        <!-- Info Boxes -->
+        <div id="science-info" class="info-box">
+            <h3>Science Fun</h3>
+            <p>Explore the wonders of the natural world with engaging science videos about physics, chemistry, and biology.</p>
+        </div>
+        <div id="history-info" class="info-box">
+            <h3>History Adventures</h3>
+            <p>Take a journey through time with captivating history videos that bring past events to life.</p>
+        </div>
+        <div id="creative-info" class="info-box">
+            <h3>Creative Arts</h3>
+            <p>Encourage your child's creativity with videos introducing painting, music, and crafts.</p>
+        </div>
+        <div id="math-info" class="info-box">
+            <h3>Math Magic</h3>
+            <p>Make math fun with interactive videos on numbers, patterns, and equations!</p>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="back-button" onclick="backToSection('home')">Back</button>
+            <button class="continue-button" onclick="nextSection('interactive')">Next</button>
+        </div>
+    </section>
+
+    <!-- Interactive Stories Section -->
+    <section id="interactive" class="fun-page">
+        <div class="image-container">
+            <img src="pdd images/funimage2.jpg" alt="Interactive Stories">
+        </div>
+        <h2>Interactive Stories</h2>
+        <p>Enjoy interactive stories where your child can choose paths and make decisions to change the outcome.</p>
+        
+        <div class="navigation-buttons">
+            <button class="back-button" onclick="backToSection('videos')">Back</button>
+            <button class="continue-button" onclick="nextSection('learning')">Next</button>
+        </div>
+    </section>
+
+    <!-- Learning Activities Section -->
+    <section id="learning" class="fun-page">
+        <div class="image-container">
+            <img src="pdd images/funimage3.jpg" alt="Learning Activities">
+        </div>
+        <h2>Learning Activities</h2>
+        <p>Interactive learning activities to help children explore math, science, and language arts!</p>
+        
+        <div class="navigation-buttons">
+            <button class="back-button" onclick="backToSection('interactive')">Back</button>
+            <button class="continue-button" onclick="nextSection('end')">Next</button>
+        </div>
+    </section>
+
+    <!-- End Section -->
+    <section id="end" class="fun-page">
+        <h2>Enjoy the Fun!</h2>
+        <p>We hope your child enjoys all the fun and learning activities on Kids World. Let's get started!</p>
+        <div class="navigation-buttons">
+            <button class="back-button" onclick="backToSection('learning')">Back</button>
+            <a href="http://localhost/pdd/user/selection.php">
+                <button class="continue-button">Let's Get Started</button>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        function nextSection(sectionId) {
+            const currentSection = document.querySelector('.fun-page:not([style*="display: none"])');
+            const nextSection = document.getElementById(sectionId);
+            if (nextSection) {
+                currentSection.style.display = 'none';
+                nextSection.style.display = 'block';
+            } else {
+                console.error(`Section with ID "${sectionId}" not found.`);
+            }
+        }
+
+        function backToSection(sectionId) {
+            nextSection(sectionId);
+        }
+
+        function showInfo(infoId) {
+            const infoBoxes = document.querySelectorAll('.info-box');
+            infoBoxes.forEach(box => box.style.display = 'none');
+            const infoBox = document.getElementById(infoId);
+            if (infoBox) infoBox.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

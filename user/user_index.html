@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids World Platform</title>
+    <link rel="stylesheet" href="../index.css">  
+    <style>
+        header span {
+            align-items: center;
+            color: #fff;
+            justify-content: center;
+            display: flex;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        header span img {
+            margin-right: 20px;
+        }
+    </style> 
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <span><img class="log" src="../pdd images/logo.jpg" alt="Kids World Logo"> KIDS WORLD</span>
+        
+        <div>
+            <button class="About" onclick="openModal('aboutModal')">ABOUT</button>
+            <button class="watch-now-btn" onclick="openModal('watchNowModal')">WATCH NOW</button>
+            <button class="menu-btn" onclick="toggleMenu()" style="color: white;">MENU</button>
+        </div>
+    </header>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+            <li><a href="../signup.html">Create Profile</a></li>
+            <li><a href="../history1.php">History</a></li>
+            <li><a href="#" onclick="showSettings()">Settings</a></li>
+            <!-- Logout button with JavaScript redirection -->
+            <li><a href="../login.php">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('settingsModal')">X</span>
+            <h2>Settings</h2>
+            <ul>
+                <li><a href="selection.php">Parents Controls</a></li>
+                <li><a href="../rating.php">Rating</a></li>
+                <li><a href="../admin/suggestavideo.php">suggest a video</a></li>
+                <li><a href="../history1.php">History</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('aboutModal')">X</span>
+            <h2>About </h2>
+            <ul>
+                <li><a href="../safer1.html">SAFER ENVIRONMENT</a></li>
+                <li><a href="../funoneveryscreen1.html">FUN ON EVERY SCREEN</a></li>
+                <li><a href="../parentsresourse1.html">PARENTS RESOURCE</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Watch Now Modal -->
+    <div class="modal" id="watchNowModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('watchNowModal')">X</span>
+            <ul>
+                <li><a href="selection.php">LET'S GET STARTED</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content Section with Full-Page Slides -->
+    <div class="content" id="slides">
+        <div class="slide active">
+            <img src="../pdd images/signupimage.jpg" alt="Kid using a device">
+            <div class="text-section">
+                <h1>Just for Kids</h1>
+                <p>JJust for Kids is a magical world designed entirely with kids in mind, where learning meets fun at every turn! Explore engaging content tailored for children, offering a perfect balance of entertainment and education. Discover interactive games, exciting videos, and activities that spark creativity and curiosity. From learning alphabets to exploring science experiments, every feature is designed to make learning a joyous adventure.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="../pdd images/parentscontrolsimage.avif" alt="Parental control tools">
+            <div class="text-section">
+                <h1>Parental Controls for Peace of Mind</h1>
+                <p>Provides parents with the tools they need to feel confident and secure about their children’s online experience. Enjoy customizable options to limit screen time, select appropriate content, and monitor activity effectively. With robust parental control settings, you can create profiles for each child, adjust their preferences, and ensure they access only age-appropriate material. Peace of mind for parents, fun and freedom for kids</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="../pdd images/indeximage4.jpeg" alt="Fun on every screen">
+            <div class="text-section">
+                <h1>A Safer Online Experience for Kids</h1>
+                <p>A commitment to creating a secure and nurturing digital space where kids can explore, learn, and have fun. We prioritize safety by integrating advanced filters, moderation tools, and ad-free content for a worry-free environment. With features that protect kids from harmful content and promote positive engagement, we ensure a trusted platform that families can rely on every day</p>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="prev-btn" onclick="prevSlide()">&#10094;</button>
+        <button class="next-btn" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Kids Video Platform. All Rights Reserved.</p>
+        <nav>
+            <a href="../privacy-policy.html">Privacy Policy</a> | 
+            <a href="../terms-of-service.html">Terms of Service</a>
+        </nav>
+    </footer>
+
+    <script src="../homeindex.js"></script>
+</body>
+</html>

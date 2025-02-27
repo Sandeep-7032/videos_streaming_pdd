@@ -1,0 +1,100 @@
+/* Resetting styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Container styling */
+  .container {
+    /* display: flex; */
+    gap: 30px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Styling for each age group box */
+  a.age-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 30px;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background-color: #333; /* Default background color for contrast */
+  }
+  
+  /* Image styling */
+  a.age-group img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Adds visibility */
+  }
+  
+  /* Text alignment */
+  a.age-group h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+  
+  a.age-group p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    max-width: 90%;
+  }
+  
+  /* Vibrant background colors for each age group */
+  .preschool {
+    background-color: #0096FF; /* Bright blue */
+  }
+  
+  .youngers {
+    background-color: #FF8000; /* Bright orange */
+  }
+  
+  .olders {
+    background-color: #5A189A; /* Rich purple */
+  }
+  
+  /* Overall Next Button styling */
+  .next-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .overall-next-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .overall-next-button:hover {
+    background-color: #555;
+    transform: translateY(-3px);
+  } 

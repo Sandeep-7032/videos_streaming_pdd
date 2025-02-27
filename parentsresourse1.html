@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids World - Parent Resources</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body {
+            background-color: #edf2f7; /* Light Gray */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #2d3748; /* Dark Slate */
+            text-align: center;
+        }
+        .resources-page {
+            background-color: #4c51bf; /* Deep Blue */
+            padding: 40px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            display: none;
+            border-radius: 10px;
+        }
+        .resources-page h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .resources-page p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .image-container img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .continue-button, .back-button {
+            padding: 12px 25px;
+            background-color: #f56565; /* Soft Red */
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s;
+            border-radius: 5px;
+        }
+        .continue-button:hover, .back-button:hover {
+            transform: scale(1.1);
+        }
+        .footer {
+            background-color: #2d3748; /* Charcoal Gray */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Monitoring Section -->
+    <section id="monitoring" class="resources-page">
+        <div class="image-container">
+            <img src="pdd images/parentsresourseimage1.png" alt="Monitoring Resources">
+        </div>
+        <h2>Monitoring</h2>
+        <p>Monitor your child's activity on Kids World, including the content they interact with, how long they spend on the platform, and their general behavior.</p>
+        <p>As a parent, it’s crucial to stay informed about your child's engagement with online content. Set up personalized activity reports and get instant notifications about any changes or irregularities in their usage.</p>
+        <button class="back-button" onclick="goHome()">Back</button>
+        <button class="continue-button" onclick="nextSection('screen-time')">Next</button>
+    </section>
+
+    <!-- Screen Time Setup Section -->
+    <section id="screen-time" class="resources-page">
+        <div class="image-container">
+            <img src="pdd images/parentsresourseimage2.png" alt="Screen Time Setup">
+        </div>
+        <h2>Screen Time Setup</h2>
+        <p>Set time limits to control how much time your child spends on Kids World. You can set daily or weekly limits to ensure your child gets enough time for other activities.</p>
+        <p>Kids World allows you to monitor their screen time usage, and you’ll get alerted when they reach their daily or weekly limits. You can also pause screen time access remotely if necessary.</p>
+        <button class="back-button" onclick="backToSection('monitoring')">Back</button>
+        <button class="continue-button" onclick="nextSection('history')">Next</button>
+    </section>
+
+    <!-- Activity History Section -->
+    <section id="history" class="resources-page">
+        <div class="image-container">
+            <img src="pdd images/parentsresourseimage3.avif" alt="Activity History">
+        </div>
+        <h2>Activity History</h2>
+        <p>View a detailed history of your child’s activities, including the videos they’ve watched, games they’ve played, and the interactive content they’ve engaged with.</p>
+        <p>Reviewing activity history helps you understand your child’s preferences and ensures they are interacting with content that aligns with your expectations. This feature is vital for guiding your child's learning and entertainment choices.</p>
+        <button class="back-button" onclick="backToSection('screen-time')">Back</button>
+        <button class="continue-button" onclick="nextSection('content-filtering')">Next</button>
+    </section>
+
+    <!-- Content Filtering Section -->
+    <section id="content-filtering" class="resources-page">
+        <div class="image-container">
+            <img src="pdd images/parentsresourseimage4.jpg" alt="Content Filtering">
+        </div>
+        <h2>Content Filtering</h2>
+        <p>Enable content filtering features to make sure your child only accesses age-appropriate material. Block out content that may be unsuitable or harmful for young viewers.</p>
+        <p>Content filtering can be customized to block categories of content, specific keywords, or even specific creators. This helps you create a safe and enjoyable environment for your child on Kids World.</p>
+        <button class="back-button" onclick="backToSection('history')">Back</button>
+        <button class="continue-button" onclick="nextSection('privacy-settings')">Next</button>
+    </section>
+
+    <!-- Privacy Settings Section -->
+    <section id="privacy-settings" class="resources-page">
+        <div class="image-container">
+            <img src="pdd images/parentsresourseimage5.png" alt="Privacy Settings">
+        </div>
+        <h2>Privacy Settings</h2>
+        <p>Take control of your child’s privacy by adjusting their account settings. Decide what information they can share, and control who can interact with them on the platform.</p>
+        <p>We take privacy seriously and offer various tools to ensure your child’s data is protected. From limiting social interactions to controlling data sharing, you can rest assured that your child's information remains secure.</p>
+        <a href="http://localhost/pdd/user/selection.php">
+            <button class="continue-button">Let's Get Started</button>
+        </a>
+    </section>
+
+    <script>
+        // Function to move to the next section
+        function nextSection(sectionId) {
+            const currentSection = document.querySelector('.resources-page:not([style*="display: none"])');
+            const nextSection = document.getElementById(sectionId);
+            
+            currentSection.style.display = 'none';
+            nextSection.style.display = 'block';
+        }
+
+        // Function to go back to the previous section
+        function backToSection(sectionId) {
+            const currentSection = document.querySelector('.resources-page:not([style*="display: none"])');
+            const previousSection = document.getElementById(sectionId);
+            
+            currentSection.style.display = 'none';
+            previousSection.style.display = 'block';
+        }
+
+        // Function to go back to the home page
+        function goHome() {
+            window.location.href = "user/user_index.html";
+        }
+
+        // Show the first section initially
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('monitoring').style.display = 'block';
+        });
+    </script>
+
+    <div class="footer">
+        <p>&copy; 2025 Kids World - All rights reserved</p>
+    </div>
+
+</body>
+</html>

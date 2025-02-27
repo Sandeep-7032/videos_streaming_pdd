@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('pdd images/siginupimage.avif') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #564f9d;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .navbar a:hover {
+            background-color: #f38805;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            margin-top: 100px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #fa6600;
+            color: white;
+            cursor: pointer;
+        }
+    
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .bottom-buttons button {
+            flex: 1;
+        }
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+     <!-- Navigation Bar -->
+     <div class="navbar">
+        <a href="index.html" onclick="goHome()">Go to Home</a>
+    </div>
+    <div class="container">
+        <h2>Signup</h2>
+        <form id="signup-form" action="backend/signup.php" method="POST" onsubmit="return validateForm()">
+            <!-- Signup Fields -->
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <span id="email-error" class="error"></span>
+        
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                
+            <label for="mobile">Mobile</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" required 
+                pattern="\d{10}" maxlength="10" title="Must be a 10-digit phone number">
+        
+            <!-- Profile Fields -->
+            <label for="childName">Child's Name</label>
+            <input type="text" id="childName" name="childname" placeholder="Enter child's name" required>
+            
+            <label for="age">Age</label>
+            <input type="text" id="age" name="age" readonly required>
+            
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required onchange="calculateAge()">
+            <span id="dob-error" class="error"></span>
+        
+            <!-- Submit and Login Buttons -->
+            <div class="bottom-buttons">
+                <button type="submit">Submit</button>
+                <button type="button" onclick="redirectToLogin()">Click Here to Login</button>
+            </div>
+        </form>
+        
+    </div>
+
+    <script>
+        // Redirect to login page
+        function redirectToLogin() {
+            window.location.href = "login.php";
+        }
+
+        // Validate email domain
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailValue = emailInput.value;
+
+            if (!emailValue.endsWith("@gmail.com")) {
+                emailError.textContent = "Only @gmail.com email addresses are accepted.";
+                return false;
+            }
+
+            emailError.textContent = ""; // Clear any previous error message
+            return true;
+        }
+
+        // Calculate age based on DOB
+        function calculateAge() {
+            const dobInput = document.getElementById('dob');
+            const ageInput = document.getElementById('age');
+            const dobError = document.getElementById('dob-error');
+
+            const dobValue = new Date(dobInput.value);
+            const today = new Date();
+            let age = today.getFullYear() - dobValue.getFullYear();
+
+            const monthDifference = today.getMonth() - dobValue.getMonth();
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dobValue.getDate())) {
+                age--;
+            }
+
+            if (age < 12) {
+                ageInput.value = age;
+                dobError.textContent = "";
+            } else {
+                ageInput.value = "";
+                dobError.textContent = "Your age is more than 12. This service is just for kids.";
+            }
+        }
+
+        // Validate the entire form
+        function validateForm() {
+            return validateEmail();
+        }
+    </script>
+</body>
+</html>

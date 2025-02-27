@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('../pdd images/suggestionimage .jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4c51bf;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .home-btn {
+            text-decoration: none;
+            color: white;
+            background-color: #5a67d8;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background-color: #555;
+        }
+
+        /* Add Category Form Styles */
+        #categoryForm {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 500px;
+            font-family: Arial, sans-serif;
+            opacity: 0.95;
+        }
+
+        #categoryForm h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        #categoryForm label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #categoryForm input[type="text"],
+        #categoryForm textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            transition: border 0.3s;
+        }
+
+        #categoryForm input[type="text"]:focus,
+        #categoryForm textarea:focus {
+            border-color: #ff9933;
+            outline: none;
+            background-color: #fff;
+        }
+
+        #categoryForm .btn {
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        #categoryForm .btn:hover {
+            background-color: #4c51bf;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #4c51bf;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="admin.php" class="home-btn">Home</a>
+        <h1>Kids World</h1>
+    </header>
+
+    <!-- Add Category Form -->
+    <form id="categoryForm" method="post" action="../backend/add_category.php">
+        <h2>Add New Category</h2>
+        <label for="category-name">Category Name:</label>
+        <input type="text" id="category-name" name="category-name" placeholder="Enter category name" required>
+        
+        <label for="category-description">Description:</label>
+        <textarea id="category-description" name="category-description" rows="4" placeholder="Enter category description" required></textarea>
+        
+        <button type="submit" class="btn">Add Category</button>
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <?php echo date("Y"); ?> Kids World | All Rights Reserved
+    </footer>
+</body>
+</html>

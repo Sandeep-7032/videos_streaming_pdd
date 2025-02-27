@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids World - Safer Experience</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body {
+            background: url('background-image.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            background-color: #4c51bf; /* Deep Blue */
+            color: white;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        footer {
+            background-color: #2d3748; /* Charcoal Gray */
+            color: white;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+        .safer-page {
+            background-color: #4c51bf; /* Deep Blue */
+            padding: 40px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+        .safer-page h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .safer-page p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .safer-page ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .safer-page ul li {
+            margin: 10px 0;
+        }
+        .image-container img {
+            width: 100%;
+            max-width: 600px;
+            height: 100%;
+            margin-bottom: 65px;
+        }
+        .continue-button, .back-button {
+            padding: 10px 20px;
+            background-color: #f56565; /* Soft Red */
+            color: #2d3748; /* Dark Slate */
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+        .continue-button:hover, .back-button:hover {
+            transform: scale(1.1);
+        }
+        /* Ensuring the page content fits well */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Kids World - Safer Experience</h1>
+    </header>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="safer-page">
+        <div class="content">
+            <div class="image-container">
+                <img src="pdd images/saferimage1.jpg" alt="Welcome to Kids World">
+            </div>
+            <h2>Welcome to Kids World</h2>
+            <p>We are committed to providing a safe, secure, and enjoyable experience for children. Explore a world where fun and safety come together.</p>
+            <p>Your child’s online safety is our top priority. We have implemented numerous features to ensure that Kids World remains a safe environment.</p>
+            <button class="back-button" onclick="goHome()">Back to Home</button>
+            <button class="continue-button" onclick="nextSection('terms')">Next</button>
+        </div>
+    </section>
+
+    <!-- Terms and Conditions Section -->
+    <section id="terms" class="safer-page">
+        <div class="content">
+            <div class="image-container">
+                <img src="pdd images/saferimage2.jpg" alt="Terms and Conditions">
+            </div>
+            <h2>Terms and Conditions</h2>
+            <p>By using Kids World, you agree to our commitment to a safe, secure, and child-friendly environment. Parents are encouraged to:</p>
+            <ul>
+                <li>Monitor their children's activities on the platform.</li>
+                <li>Set screen time limits and use parental controls.</li>
+                <li>Ensure their children only access age-appropriate content.</li>
+                <li>Keep track of activity reports and interaction history.</li>
+            </ul>
+            <p>We respect the privacy of children, and we’re committed to keeping the platform free from inappropriate content.</p>
+            <button class="back-button" onclick="backToSection('welcome')">Back</button>
+            <button class="continue-button" onclick="nextSection('safer')">Next</button>
+        </div>
+    </section>
+
+    <!-- Safer Environment Section -->
+    <section id="safer" class="safer-page">
+        <div class="content">
+            <div class="image-container">
+                <img src="pdd images/saferimage3.jpg" alt="Safer Environment">
+            </div>
+            <h2>Safer Environment</h2>
+            <p>Kids World offers a variety of safety measures to ensure that children can enjoy their content in a safe and protected environment. Features include:</p>
+            <ul>
+                <li>Strict content filters to block inappropriate material.</li>
+                <li>Parental control options for customized viewing.</li>
+                <li>24/7 monitoring of content and interaction reports.</li>
+            </ul>
+            <p>Your child's safety is our top priority!</p>
+            <a href="http://localhost/pdd/user/selection.php">
+                <button class="continue-button">Let's Get Started</button>
+            </a>
+            <button class="back-button" onclick="backToSection('terms')">Back</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Kids World. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to move to the next section
+        function nextSection(sectionId) {
+            const currentSection = document.querySelector('.safer-page:not([style*="display: none"])');
+            const nextSection = document.getElementById(sectionId);
+            
+            currentSection.style.display = 'none';
+            nextSection.style.display = 'block';
+        }
+
+        // Function to move back to a previous section
+        function backToSection(sectionId) {
+            const currentSection = document.querySelector('.safer-page:not([style*="display: none"])');
+            const previousSection = document.getElementById(sectionId);
+            
+            currentSection.style.display = 'none';
+            previousSection.style.display = 'block';
+        }
+
+        // Function to go back to the home page
+        function goHome() {
+            window.location.href = "user/user_index.html";
+        }
+
+        // Show the first section initially
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('welcome').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
